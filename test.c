@@ -45,7 +45,6 @@ static void test_parse_null() {
 	EXPECT_EQ_INT(LEPT_NULL, lept_get_type(&v));
 }
 
-/* tutorial 1 ****************/
 static void test_parse_true() {
 	lept_value v;
 	v.type = LEPT_FALSE;
