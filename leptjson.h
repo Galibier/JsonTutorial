@@ -12,7 +12,7 @@ typedef struct {
 			size_t len;
 		}s;
 		double n;
-	};
+	}u;
 	lept_type type;
 }lept_value;
 
