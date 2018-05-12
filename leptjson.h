@@ -7,11 +7,8 @@ typedef enum { LEPT_NULL, LEPT_FALSE, LEPT_TRUE, LEPT_NUMBER, LEPT_STRING, LEPT_
 
 typedef struct {
 	union {
-		struct {
-			char* s;
-			size_t len;
-		}s;
-		double n;
+		struct { char* s; size_t len; }s;  /* string: null-terminated string, string length */
+		double n;                          /* number */
 	}u;
 	lept_type type;
 }lept_value;
@@ -27,7 +24,7 @@ enum {
 	LEPT_PARSE_INVALID_STRING_CHAR
 };
 
-#define lept_init(v)	do{(v)->type = LEPT_NULL;}while(0)
+#define lept_init(v) do { (v)->type = LEPT_NULL; } while(0)
 
 int lept_parse(lept_value* v, const char* json);
 
@@ -35,7 +32,7 @@ void lept_free(lept_value* v);
 
 lept_type lept_get_type(const lept_value* v);
 
-#define lept_set_null(v)	lept_free(v);
+#define lept_set_null(v) lept_free(v)
 
 int lept_get_boolean(const lept_value* v);
 void lept_set_boolean(lept_value* v, int b);
