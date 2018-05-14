@@ -10,7 +10,7 @@ namespace json {
 	constexpr bool is1to9(char ch) { return ch >= '1'&&ch <= '9'; }
 	constexpr bool is0to9(char ch) { return ch >= '0'&&ch <= '9'; }
 
-	Json Parser::Parse() {
+	Json Parser::parse() {
 		parseWhitespace();
 		Json json = parseValue();
 		parseWhitespace();
@@ -101,7 +101,7 @@ namespace json {
 				case 'n': str.push_back('\n'); break;
 				case 't': str.push_back('\t'); break;
 				case 'r': str.push_back('\r'); break;
-				case 'u': {
+				case 'u': {//need?
 					unsigned u1 = parse4hex();
 					if (u1 >= 0xd800 && u1 <= 0xdbff) {
 						if (*++curr_ != '\\')

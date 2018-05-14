@@ -8,7 +8,7 @@ namespace json {
 	class Parser final :Uncopyable {
 	public:
 		Parser(const std::string& content) noexcept : start_(content.c_str()), curr_(content.c_str()) {}
-		Json Parse();
+		Json parse();
 
 	private:
 		Json parseValue();
