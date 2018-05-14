@@ -28,6 +28,11 @@ namespace json {
 
 		std::string serialize() const noexcept;
 
+		explicit Json(std::nullptr_t);
+		explicit Json(bool);
+		explicit Json(int val) : Json(1.0 * val) {}
+		explicit Json(double);
+
 		explicit Json(const char* cstr) :Json(std::string(cstr)) {}
 		explicit Json(const std::string&);
 		explicit Json(const array_t&);
