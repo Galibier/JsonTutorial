@@ -111,7 +111,8 @@ namespace json {
 	string Json::serializeArray() const noexcept {
 		string ret = "[ ";
 		for (size_t i = 0; i < value_->size(); ++i) {
-			if (i > 0) ret += ", ";
+			if (i > 0) 
+				ret += ", ";
 			ret += (*this)[i].serialize();
 		}
 		return ret + " ]";
@@ -134,7 +135,8 @@ namespace json {
 	}
 
 	bool operator==(const Json& lhs, const Json& rhs) noexcept {
-		if (lhs.type() != rhs.type()) return false;
+		if (lhs.type() != rhs.type()) 
+			return false;
 
 		switch (lhs.type()) {
 		case JsonType::kNull: return true;

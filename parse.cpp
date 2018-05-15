@@ -101,7 +101,7 @@ namespace json {
 				case 'n': str.push_back('\n'); break;
 				case 't': str.push_back('\t'); break;
 				case 'r': str.push_back('\r'); break;
-				case 'u': {//need?
+				case 'u':
 					unsigned u1 = parse4hex();
 					if (u1 >= 0xd800 && u1 <= 0xdbff) {
 						if (*++curr_ != '\\')
@@ -114,7 +114,7 @@ namespace json {
 						u1 = (((u1 - 0xd800) << 10) | (u2 - 0xdc00)) + 0x10000;
 					}
 					str += encodeUTF8(u1);
-				}	break;
+					break;
 				default:
 					error("INVALID STRING ESCAPE");
 				}
@@ -194,11 +194,11 @@ namespace json {
 		}
 		while (1) {
 			parseWhitespace();
-			if (*curr_ != '"') 
+			if (*curr_ != '"')
 				error("MISS KEY");
 			string key = parseRawString();
 			parseWhitespace();
-			if (*curr_++ != ':') 
+			if (*curr_++ != ':')
 				error("MISS COLON");
 			parseWhitespace();
 			Json val = parseValue();
@@ -216,7 +216,7 @@ namespace json {
 	}
 
 	void Parser::parseWhitespace() noexcept {
-		while (*curr_ == ' ' || *curr_ == '\t' || *curr_ == '\r' || *curr_ == '\n') 
+		while (*curr_ == ' ' || *curr_ == '\t' || *curr_ == '\r' || *curr_ == '\n')
 			++curr_;
 		start_ = curr_;
 	}
